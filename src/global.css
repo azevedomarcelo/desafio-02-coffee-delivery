@@ -1,0 +1,41 @@
+:root {
+  --background: #FAFAFA;
+  --white: #FFFFFF;
+  --card: #F3F2F2;
+  --input: #EDEDED;
+  --button: #E6E5E5;
+  --text: #574F4D;
+  --label: #8D8686;
+  --subtitle: #8D8686;
+  --base-subtitle: #403937;
+  --title: #272221;
+
+  --purple: #8047F8;
+  --purple-dark: #4B2995;
+  --purple-light: #EBE5F9;
+
+  --yellow: #DBAC2C;
+  --yellow-dark: #C47F17;
+  --yellow-light: #F1E9C9;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #FAFAFA;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+body, input, button {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+}
