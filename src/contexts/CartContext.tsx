@@ -48,7 +48,7 @@ export const CartProvider = ({ children }: Props) => {
   const handleRemoveItemFromCart = useCallback((productId: number) => {
     console.log(productId);
   }, []);
-  
+
   return (
     <CartContext.Provider value={{
       cart,
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }: Props) => {
       handleAddToCart,
       handleQuantityChange,
       handleRemoveItemFromCart,
-      selectedPaymentMethod, 
+      selectedPaymentMethod,
       setSelectedPaymentMethod,
     }}>
       {children}

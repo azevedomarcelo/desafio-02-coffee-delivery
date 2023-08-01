@@ -31,12 +31,12 @@ export function Cart() {
 
             <div className={styles.twoFields}>
               <input type="text" placeholder="Número" className={styles.input} />
-              <input type="text" placeholder="Complemento" className={styles.input} style={{ flex: 1,}} />
+              <input type="text" placeholder="Complemento" className={styles.input} style={{ flex: 1, }} />
             </div>
 
             <div className={styles.threeFields}>
               <input type="text" placeholder="Bairro" className={styles.input} />
-              <input type="text" placeholder="Cidade" className={styles.input} style={{ flex: 1,}} />
+              <input type="text" placeholder="Cidade" className={styles.input} style={{ flex: 1, }} />
               <input type="text" placeholder="UF" className={styles.input} style={{ width: '3.75rem' }} />
             </div>
           </div>

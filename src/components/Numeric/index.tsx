@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 interface NumericProps {
   quantity: number;
   onQuantityChange: (quantity: number) => void;
-  showTrash: boolean;
+  showTrash?: boolean;
   removeItem: (index: number) => void;
 }
 

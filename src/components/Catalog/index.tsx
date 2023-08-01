@@ -33,6 +33,7 @@ export function Catalog() {
                 onQuantityChange={(quantity) =>
                   handleQuantityChange(product.id, quantity)
                 }
+                removeItem={() => { }}
               />
 
               <button className={styles.btnAddToCart} onClick={() => handleAddToCart(product)}>
