@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useReducer, useState } from 'react';
 import { products as initialProducts } from "../products";
 
 interface ProductProps {
@@ -16,7 +16,7 @@ interface Props {
 }
 
 interface CartContextProps {
-  products: ProductProps[];
+  productState: ProductProps[];
   cart: ProductProps[];
   handleAddToCart: (product: ProductProps) => void;
   handleQuantityChange: (productId: number, quantity: number) => void;
@@ -28,35 +28,49 @@ interface CartContextProps {
 export const CartContext = createContext({} as CartContextProps);
 
 export const CartProvider = ({ children }: Props) => {
-  const [products, setProducts] = useState<ProductProps[]>(initialProducts);
-  const [cart, setCart] = useState<ProductProps[]>([]);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(0);
+  const [productState, dispatch] = useReducer((state: ProductProps[], action: any) => {
+    switch (action.type) {
+      case 'QUANTITY_CHANGE':
+        return state.map((product) =>
+          product.id === action.payload.productId ?
+            { ...product, quantity: action.payload.quantity }
+            : product
+        )
+      default:
+        return state;
+    }
+  }, initialProducts);
 
+  const [cart, setCart] = useState<ProductProps[]>([]);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(-1);
 
   const handleAddToCart = useCallback((product: ProductProps) => {
     setCart(state => [...state, product]);
   }, []);
 
   const handleQuantityChange = useCallback((productId: number, quantity: number) => {
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === productId ? { ...product, quantity } : product
-      )
-    );
+    dispatch({
+      type: 'QUANTITY_CHANGE',
+      payload: {
+        productId,
+        quantity,
+      }
+    });
   }, []);
 
   const handleRemoveItemFromCart = useCallback((productId: number) => {
-    console.log(productId);
-  }, []);
+    const newProducts = cart.filter(p => p.id !== productId);
+    setCart(newProducts);
+  }, [cart]);
 
   return (
     <CartContext.Provider value={{
       cart,
-      products,
+      productState,
       handleAddToCart,
       handleQuantityChange,
-      handleRemoveItemFromCart,
       selectedPaymentMethod,
+      handleRemoveItemFromCart,
       setSelectedPaymentMethod,
     }}>
       {children}

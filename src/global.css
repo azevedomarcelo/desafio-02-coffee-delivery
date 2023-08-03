@@ -6,7 +6,7 @@
   --button: #E6E5E5;
   --text: #574F4D;
   --label: #8D8686;
-  --subtitle: #8D8686;
+  --subtitle: #403937;
   --base-subtitle: #403937;
   --title: #272221;
 
@@ -29,6 +29,10 @@ body {
   background: #FAFAFA;
   max-width: 1280px;
   margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
 }
 
 body, input, button {

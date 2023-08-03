@@ -5,7 +5,7 @@ interface NumericProps {
   quantity: number;
   onQuantityChange: (quantity: number) => void;
   showTrash?: boolean;
-  removeItem: (index: number) => void;
+  removeItem: () => void;
 }
 
 export const Numeric: React.FC<NumericProps> = ({ quantity, onQuantityChange, showTrash, removeItem }) => {
@@ -20,11 +20,6 @@ export const Numeric: React.FC<NumericProps> = ({ quantity, onQuantityChange, sh
     onQuantityChange(quantity + 1);
   };
 
-  const removeItemCart = (index: number) => {
-    console.log(`Removing ${index}`);
-    removeItem(index);
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.numeric}>
@@ -37,8 +32,8 @@ export const Numeric: React.FC<NumericProps> = ({ quantity, onQuantityChange, sh
         </button>
       </div>
       {showTrash ? (
-        <div className={styles.trash}>
-          <Trash onClick={() => removeItemCart} width={16} />
+        <div className={styles.trash} onClick={removeItem}>
+          <Trash width={16} />
         </div>
       ) : ''}
     </div>

@@ -1,18 +1,19 @@
 import { ShoppingCart } from "phosphor-react";
 import { useCart } from "../../hooks/useCart";
-
 import { Numeric } from "../Numeric";
+
+import { formatCurrency } from "../../utils/formatCurrency";
 
 import styles from './styles.module.css';
 
 export function Catalog() {
-  const { handleAddToCart, handleQuantityChange, products } = useCart();
+  const { handleAddToCart, handleQuantityChange, productState } = useCart();
   return (
     <section>
       <h1 className={styles.coffeeTitle}>Nossos cafés</h1>
 
       <div className={styles.cardProduct}>
-        {products.map((product, index) => (
+        {productState.map((product, index) => (
           <div className={styles.product} key={index}>
             <img src={product.url} alt="imagem cafe" />
             <p className={styles.productTags}>
@@ -22,14 +23,11 @@ export function Catalog() {
             <p className={styles.productDescription}>{product.description}</p>
             <div className={styles.productfooter}>
               <span className={styles.productPrice}>
-                {Intl.NumberFormat('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                }).format(product.price)}
+                {formatCurrency(product.price)}
               </span>
 
               <Numeric
-                quantity={product.quantity || 1}
+                quantity={product.quantity}
                 onQuantityChange={(quantity) =>
                   handleQuantityChange(product.id, quantity)
                 }

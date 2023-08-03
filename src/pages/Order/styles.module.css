@@ -1,0 +1,90 @@
+.title {
+  color: var(--yellow-dark);
+
+  /* Title/Title L */
+  font-family: 'Baloo 2';
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 130%; /* 2.6rem */
+  margin-top: 5rem;
+}
+.subtitle {
+  color: var(--base-subtitle);
+
+  /* Text/Regular L */
+  font-family: 'Roboto';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 1.625rem */
+  margin-bottom: 2.5rem;
+}
+
+.orderConfirmation {
+  display: flex;
+  align-items: center;
+  gap: 6.5rem;
+
+  > section {
+    display: flex;
+    width: 32.875rem;
+    padding: 2.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    border: 1px solid transparent;
+    
+    background: 
+      linear-gradient(white, white) padding-box,
+      linear-gradient(to right, #DBAC2C, #8047F8) border-box;
+    border-radius: 0.375rem 2.25rem;
+    border: 1px solid transparent;
+  }
+}
+
+.confirmationInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem; 
+
+  & div {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  & span, strong {
+    font-family: 'Roboto';
+    font-size: 1rem;
+    font-style: normal;
+    line-height: 130%; /* 1.3rem */
+    color: var(--text);
+  }
+
+  .confirmationMap,
+  .confirmationTime,
+  .confirmationCurrency {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 62.5rem;
+  }
+
+  .confirmationMap {
+    background: var(--purple);
+    color: #fff;
+  }
+  .confirmationTime {
+    background: var(--yellow);
+    color: #fff;
+  }
+  .confirmationCurrency {
+    background: var(--yellow-dark);
+    color: #fff;
+  }
+}
+
